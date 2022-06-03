@@ -151,7 +151,7 @@ static void compile_bf(FILE *in_fp, FILE *out_fp) {
                 break;
 
             case ',':
-                fprintf(out_fp, "%s\n", "call read\t\t\t\t; .");
+                fprintf(out_fp, "%s\n", "call read\t\t\t\t; ,");
                 break;
 
             case '[':
@@ -175,6 +175,14 @@ static void compile_bf(FILE *in_fp, FILE *out_fp) {
     fprintf(out_fp, "call _exit\n");
 }
 
+static int assemble(void) {
+    return system("nasm -felf64 out.s");
+}
+
+static int link(void) {
+    return system("ld out.o");
+}
+
 int main(void) {
     FILE *out_fp = fopen("out.s", "w");
     if (out_fp == NULL) {
@@ -187,6 +195,10 @@ int main(void) {
     compile_bf(in_fp, out_fp);
 
     fclose(out_fp);
+
+    assemble();
+    link();
+
     fclose(in_fp);
     return 0;
 }

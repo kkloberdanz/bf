@@ -82,7 +82,7 @@ static void write_setup(FILE *fp) {
         "global _start\n"
         "\n"
         "section .data\n"
-        "tape:	resb	10\n"
+        "tape:	resb	10000\n"
         "\n"
         "section .text\n"
         "\n"
@@ -184,6 +184,8 @@ static int link(void) {
 }
 
 int main(void) {
+    FILE *in_fp = stdin;
+
     FILE *out_fp = fopen("out.s", "w");
     if (out_fp == NULL) {
         exit(EXIT_FAILURE);
@@ -191,7 +193,6 @@ int main(void) {
 
     write_setup(out_fp);
 
-    FILE *in_fp = stdin;
     compile_bf(in_fp, out_fp);
 
     fclose(out_fp);

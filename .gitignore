@@ -1,3 +1,5 @@
 *.sw?
 a.out
 *.o
+bf
+*.s

@@ -1,7 +1,7 @@
 global _start
 
 section .data
-tape:	resb	10000
+tape:	resb	10
 
 section .text
 

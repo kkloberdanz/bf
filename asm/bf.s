@@ -100,8 +100,8 @@ _start:
   inc byte [rcx+tape]	; +
 
   ; while loop 3 times
-l1:						; ]
-  jz exit_l1			; ]
+l1:						; [
+  jz exit_l1			; [
 
   dec rcx				; <
   dec rcx				; <
@@ -110,7 +110,7 @@ l1:						; ]
   inc rcx				; >
   dec byte [rcx+tape]	; -
 
-  jmp l1				; [
-exit_l1:				; [
+  jmp l1				; ]
+exit_l1:				; ]
 
   call _exit

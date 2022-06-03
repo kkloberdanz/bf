@@ -98,6 +98,7 @@ _start:
   inc byte [rcx+tape]	; +
   inc byte [rcx+tape]	; +
   inc byte [rcx+tape]	; +
+  inc byte [rcx+tape]	; +
 
   ; while loop 3 times
 l1:						; [

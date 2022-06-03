@@ -5,7 +5,7 @@ tape:	resb	10000
 
 section .text
 
-print:
+write:
   push rcx
   mov rax, 1        	; write
   mov rdi, 1        	; STDOUT_FILENO
@@ -77,18 +77,18 @@ _start:
 
   inc byte [rcx+tape]	; +
 
-  call print			; .
+  call write			; .
 
   inc rcx				; >
 
   call read				; ,
   dec byte [rcx+tape]	; -
 
-  call print			; .
+  call write			; .
 
   dec rcx				; <
 
-  call print			; .
+  call write			; .
 
   inc byte [rcx+tape]	; +
 
@@ -106,7 +106,7 @@ l1:						; [
 
   dec rcx				; <
   dec rcx				; <
-  call print			; .
+  call write			; .
   inc rcx				; >
   inc rcx				; >
   dec byte [rcx+tape]	; -
